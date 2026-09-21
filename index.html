@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đại sứ Văn hóa đọc | Trường Tiểu học Trần Phú - Xã Krông Nô</title>
+  <meta name="description" content="Hệ thống Đại sứ Văn hóa đọc - Trường Tiểu học Trần Phú, Xã Krông Nô. Ghi nhật ký đọc sách, tích điểm, nhận danh hiệu.">
+
+  <!-- Font chữ Nunito: tròn trịa, thân thiện với học sinh tiểu học, hỗ trợ tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================================================================
+       MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ
+       (khung nằm chính giữa màn hình, có 2 tab rõ ràng)
+  ================================================================= -->
+  <section id="authScreen" class="auth-screen">
+
+    <!-- Các hình trang trí bay lơ lửng phía sau -->
+    <div class="auth-decor" aria-hidden="true">
+      <span class="float-item" style="top:8%;  left:6%;  animation-delay:0s;">📚</span>
+      <span class="float-item" style="top:18%; right:8%; animation-delay:1.2s;">✏️</span>
+      <span class="float-item" style="bottom:14%; left:10%; animation-delay:2s;">🌟</span>
+      <span class="float-item" style="bottom:10%; right:12%; animation-delay:.6s;">📖</span>
+      <span class="float-item" style="top:55%;  left:3%;  animation-delay:1.6s;">🎈</span>
+      <span class="float-item" style="top:60%;  right:4%; animation-delay:2.4s;">🏆</span>
+    </div>
+
+    <div class="auth-card">
+
+      <!-- Cột trái: ảnh bìa / thương hiệu của trường -->
+      <div class="auth-brand">
+        <div class="auth-brand-art" aria-hidden="true">
+          <!-- Hình minh họa quyển sách mở (vẽ bằng SVG, không cần file ảnh) -->
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" role="img">
+            <ellipse cx="110" cy="126" rx="86" ry="10" fill="rgba(0,0,0,.12)"/>
+            <path d="M110 34 C 78 16, 38 16, 22 26 L 22 106 C 38 96, 78 96, 110 114 Z" fill="#fffde7" stroke="#f9a825" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M110 34 C 142 16, 182 16, 198 26 L 198 106 C 182 96, 142 96, 110 114 Z" fill="#ffffff" stroke="#f9a825" stroke-width="4" stroke-linejoin="round"/>
+            <line x1="110" y1="36" x2="110" y2="112" stroke="#f9a825" stroke-width="4"/>
+            <g stroke="#c5d6c6" stroke-width="4" stroke-linecap="round">
+              <line x1="40" y1="44" x2="92" y2="52"/>
+              <line x1="40" y1="60" x2="92" y2="68"/>
+              <line x1="40" y1="76" x2="92" y2="84"/>
+              <line x1="128" y1="52" x2="180" y2="44"/>
+              <line x1="128" y1="68" x2="180" y2="60"/>
+              <line x1="128" y1="84" x2="180" y2="76"/>
+            </g>
+            <g fill="#f9a825">
+              <path d="M110 6 l3.5 7.5 8 1 -5.8 5.6 1.4 8 -7.1 -3.8 -7.1 3.8 1.4 -8 -5.8 -5.6 8 -1 Z"/>
+              <circle cx="52" cy="14" r="4"/>
+              <circle cx="172" cy="10" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <h1 class="auth-brand-title">Hệ thống<br>Đại sứ Văn hóa đọc</h1>
+        <p class="auth-brand-sub">Trường Tiểu học Trần Phú - Xã Krông Nô</p>
+        <ul class="auth-features">
+          <li>✅ Ghi nhật ký đọc sách mỗi ngày</li>
+          <li>✅ Tích điểm, nhận danh hiệu Đại sứ</li>
+          <li>✅ Thư viện số &amp; video cảm nhận sách</li>
+        </ul>
+      </div>
+
+      <!-- Cột phải: form đăng nhập / đăng ký -->
+      <div class="auth-forms">
+
+        <!-- Tiêu đề rút gọn (chỉ hiện trên màn hình nhỏ khi cột trái bị ẩn) -->
+        <div class="auth-head-mobile">
+          <div class="auth-logo">📚</div>
+          <h1>Hệ thống Đại sứ Văn hóa đọc</h1>
+          <p>Trường Tiểu học Trần Phú - Xã Krông Nô</p>
+        </div>
+
+        <!-- 2 tab: Đăng nhập / Đăng ký -->
+        <div class="auth-tabs" role="tablist">
+          <button type="button" id="tabLogin" class="auth-tab active" role="tab" aria-selected="true">🔐 Đăng nhập</button>
+          <button type="button" id="tabRegister" class="auth-tab" role="tab" aria-selected="false">📝 Đăng ký</button>
+        </div>
+
+        <!-- FORM ĐĂNG NHẬP -->
+        <form id="loginForm" autocomplete="on">
+          <div class="field">
+            <label for="loginUsername">Tên đăng nhập</label>
+            <input id="loginUsername" type="text" placeholder="Ví dụ: an.nguyen" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Mật khẩu</label>
+            <input id="loginPassword" type="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+          <p class="form-message" id="loginMessage" role="alert"></p>
+        </form>
+
+        <!-- FORM ĐĂNG KÝ TÀI KHOẢN HỌC SINH -->
+        <form id="registerForm" hidden>
+          <div class="field">
+            <label for="regName">Họ và tên học sinh</label>
+            <input id="regName" type="text" placeholder="Ví dụ: Nguyễn Văn An" autocomplete="off" required>
+          </div>
+          <div class="field">
+            <label for="regUsername">Tên đăng nhập</label>
+            <input id="regUsername" type="text" placeholder="Chữ thường, không dấu. Ví dụ: an.nguyen" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="regPassword">Mật khẩu <small>(ít nhất 6 ký tự)</small></label>
+            <input id="regPassword" type="password" placeholder="Tạo mật khẩu" autocomplete="new-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Đăng ký tài khoản học sinh</button>
+          <p class="form-message" id="registerMessage" role="alert"></p>
+        </form>
+
+        <!-- Thông báo khi chưa cấu hình Firebase (chạy chế độ thử nghiệm) -->
+        <p class="demo-note" id="demoModeNote" hidden>
+          ⚠️ Đang chạy <b>chế độ thử nghiệm</b>: dữ liệu chỉ lưu trên máy này.<br>
+          Hãy cấu hình Firebase trong <code>firebase-config.js</code> để dùng thật.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       ỨNG DỤNG CHÍNH (hiện ra sau khi đăng nhập)
+  ================================================================= -->
+  <div id="appScreen" hidden>
+
+    <!-- Thanh menu điều hướng -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#" data-page="home">
+          <span class="brand-icon">📚</span>
+          <span class="brand-text">Đại sứ Văn hóa đọc</span>
+        </a>
+
+        <nav id="mainNav" class="main-nav">
+          <a href="#" data-page="home" class="nav-link active">🏠 Trang chủ</a>
+          <a href="#" data-page="journal" class="nav-link">📖 Nhật ký đọc</a>
+          <a href="#" data-page="library" class="nav-link">📚 Thư viện</a>
+          <a href="#" data-page="videos" class="nav-link">🎥 Video</a>
+          <a href="#" data-page="scores" class="nav-link">🏆 Bảng điểm</a>
+          <a href="#" data-page="admin" class="nav-link nav-admin" id="navAdmin" hidden>🔑 Quản trị</a>
+        </nav>
+
+        <div class="topbar-user">
+          <span class="user-chip" id="userChip">🧒 Học sinh</span>
+          <button type="button" class="btn btn-light btn-sm" id="btnLogout">🚪 Đăng xuất</button>
+        </div>
+
+        <button type="button" class="menu-toggle" id="btnMenu" aria-label="Mở menu" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <!-- Dòng nhắc khi chạy chế độ thử nghiệm -->
+    <div class="demo-bar" id="demoBar" hidden>
+      ⚠️ Chế độ thử nghiệm: dữ liệu chỉ lưu trên máy này. Cấu hình Firebase để đồng bộ qua internet.
+    </div>
+
+    <main class="page-wrap">
+
+      <!-- ============ TRANG CHỦ ============ -->
+      <section id="page-home" class="page">
+        <div class="hero card">
+          <div class="hero-text">
+            <h1>Xin chào, <span id="homeName">bạn nhỏ</span>! 👋</h1>
+            <p>Chào mừng em đến với <b>Hệ thống Đại sứ Văn hóa đọc</b> - ứng dụng chuyển đổi số
+              hoạt động đọc sách của <b>Trường Tiểu học Trần Phú - Xã Krông Nô</b>.
+              Mỗi cuốn sách em đọc và ghi lại sẽ được cộng <b id="homePointRule">10</b> điểm!</p>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-page="journal">✍️ Ghi nhật ký đọc sách</button>
+              <button type="button" class="btn btn-outline" data-page="library">📚 Vào thư viện số</button>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <!-- Minh họa bạn nhỏ đọc sách (SVG, không cần file ảnh) -->
+            <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img">
+              <circle cx="130" cy="92" r="78" fill="#e8f5e9"/>
+              <ellipse cx="130" cy="176" rx="92" ry="12" fill="rgba(46,125,50,.12)"/>
+              <!-- người -->
+              <circle cx="130" cy="70" r="26" fill="#ffe0b2"/>
+              <path d="M104 66 a26 26 0 0 1 52 0 c -6 -14 -18 -20 -26 -20 c -8 0 -20 6 -26 20 Z" fill="#5d4037"/>
+              <circle cx="121" cy="72" r="3" fill="#37474f"/>
+              <circle cx="139" cy="72" r="3" fill="#37474f"/>
+              <path d="M123 84 q 7 6 14 0" stroke="#37474f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M96 130 q 34 -28 68 0 l 0 34 l -68 0 Z" fill="#43a047"/>
+              <!-- sách -->
+              <path d="M76 132 C 96 120, 122 120, 130 130 C 138 120, 164 120, 184 132 L 184 164 C 164 154, 138 154, 130 162 C 122 154, 96 154, 76 164 Z" fill="#fffde7" stroke="#f9a825" stroke-width="5" stroke-linejoin="round"/>
+              <line x1="130" y1="130" x2="130" y2="161" stroke="#f9a825" stroke-width="4"/>
+              <!-- sao -->
+              <g fill="#f9a825">
+                <path d="M52 40 l3 6.5 7 .9 -5.1 4.9 1.2 7 -6.1 -3.3 -6.1 3.3 1.2 -7 -5.1 -4.9 7 -.9 Z"/>
+                <path d="M208 52 l2.4 5.2 5.6 .7 -4.1 3.9 1 5.6 -4.9 -2.6 -4.9 2.6 1 -5.6 -4.1 -3.9 5.6 -.7 Z"/>
+                <circle cx="196" cy="20" r="4"/>
+                <circle cx="30" cy="80" r="3"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 3 ô thống kê nhanh -->
+        <div class="stat-grid">
+          <div class="stat-card card">
+            <div class="stat-icon">📚</div>
+            <div class="stat-value" id="statBooks">0</div>
+            <div class="stat-label">Sách đã đọc</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-value" id="statScore">0</div>
+            <div class="stat-label">Điểm Đại sứ</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">🎖️</div>
+            <div class="stat-value stat-badge" id="statBadge">🌱 Người đọc mới</div>
+            <div class="stat-label">Danh hiệu hiện tại</div>
+          </div>
+        </div>
+
+        <!-- Tiến trình lên danh hiệu tiếp theo -->
+        <div class="card progress-card">
+          <h3>🚀 Chặng đường tới danh hiệu tiếp theo</h3>
+          <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+          <p class="progress-text" id="progressText">Hãy đọc sách và ghi nhật ký để tích điểm nhé!</p>
+        </div>
+      </section>
+
+      <!-- ============ NHẬT KÝ ĐỌC SÁCH ============ -->
+      <section id="page-journal" class="page" hidden>
+        <h2 class="page-title">📖 Nhật ký đọc sách</h2>
+
+        <form class="card form-card" id="journalForm">
+          <div class="field">
+            <label for="journalBook">Tên sách em vừa đọc</label>
+            <input id="journalBook" type="text" placeholder="Ví dụ: Dế Mèn phiêu lưu ký">
+          </div>
+          <div class="field">
+            <label for="journalFeeling">Cảm nhận của em</label>
+            <textarea id="journalFeeling" rows="3" placeholder="Em thích nhất điều gì trong cuốn sách này?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btnAddJournal">💾 Lưu nhật ký <span class="pt-tag">+10 điểm</span></button>
+        </form>
+
+        <h3 class="section-title">📕 Sách em đã đọc</h3>
+        <div id="journalList" class="journal-list"></div>
+        <p class="empty-note" id="journalEmpty" hidden>Em chưa ghi nhật ký cuốn sách nào. Hãy bắt đầu nhé! 🌱</p>
+      </section>
+
+      <!-- ============ THƯ VIỆN SỐ ============ -->
+      <section id="page-library" class="page" hidden>
+        <h2 class="page-title">📚 Thư viện số</h2>
+        <p class="page-desc">Bấm <b>“Đọc sách”</b> để mở sách, hoặc dùng điện thoại <b>quét mã QR</b> dưới mỗi cuốn sách.</p>
+        <div id="libraryList" class="book-grid"></div>
+        <p class="empty-note" id="libraryEmpty" hidden>Thư viện chưa có sách nào.</p>
+      </section>
+
+      <!-- ============ VIDEO GIỚI THIỆU SÁCH ============ -->
+      <section id="page-videos" class="page" hidden>
+        <h2 class="page-title">🎥 Giới thiệu - Cảm nhận sách</h2>
+        <div id="videoList" class="video-grid"></div>
+        <p class="empty-note" id="videoEmpty" hidden>Chưa có video nào.</p>
+      </section>
+
+      <!-- ============ BẢNG ĐIỂM ============ -->
+      <section id="page-scores" class="page" hidden>
+        <h2 class="page-title">🏆 Bảng điểm</h2>
+
+        <div class="score-grid">
+          <div class="card score-me">
+            <h3>Điểm của em</h3>
+            <div class="score-big" id="myScore">0</div>
+            <div class="score-badge" id="myBadge">🌱 Người đọc mới</div>
+            <div class="progress-track"><div class="progress-fill" id="scoreProgressFill" style="width:0%"></div></div>
+            <p class="progress-text" id="scoreProgressText"></p>
+          </div>
+
+          <div class="card">
+            <h3>🎖️ Các mốc danh hiệu</h3>
+            <ul class="badge-levels" id="badgeLevels"><!-- app.js tự sinh từ cấu hình --></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🌟 Bảng vàng của trường</h3>
+          <div class="table-scroll">
+            <table class="nice-table" id="leaderboardTable">
+              <thead>
+                <tr><th>Hạng</th><th>Học sinh</th><th>Sách đã đọc</th><th>Điểm</th><th>Danh hiệu</th></tr>
+              </thead>
+              <tbody id="leaderboardBody"></tbody>
+            </table>
+          </div>
+          <p class="empty-note" id="leaderboardEmpty" hidden>Chưa có học sinh nào tham gia.</p>
+        </div>
+      </section>
+
+      <!-- ============ KHU VỰC QUẢN TRỊ (chỉ admin thấy) ============ -->
+      <section id="page-admin" class="page" hidden>
+        <h2 class="page-title">🔑 Khu vực quản trị</h2>
+
+        <!-- BẢNG THỐNG KÊ HỌC SINH -->
+        <div class="card">
+          <h3>📊 Bảng thống kê học sinh</h3>
+          <div class="table-tools">
+            <input type="search" id="statsSearch" aria-label="Tìm học sinh" placeholder="🔍 Tìm theo tên học sinh...">
+            <button type="button" class="btn btn-outline btn-sm" id="btnSortScore">⬇️ Sắp xếp điểm cao → thấp</button>
+            <button type="button" class="btn btn-outline btn-sm" id="btnExportCSV">📥 Xuất Excel (CSV)</button>
+            <button type="button" class="btn btn-outline btn-sm" id="btnReloadStats">🔄 Tải lại</button>
+          </div>
+          <div class="table-scroll">
+            <table class="nice-table" id="statsTable">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Tên đăng nhập</th>
+                  <th>Họ và tên</th>
+                  <th>Số sách đã đọc</th>
+                  <th>Tổng điểm</th>
+                  <th>Danh hiệu hiện tại</th>
+                  <th>Cập nhật gần nhất</th>
+                </tr>
+              </thead>
+              <tbody id="statsBody"></tbody>
+            </table>
+          </div>
+          <p class="empty-note" id="statsEmpty" hidden>Chưa có học sinh nào đăng ký.</p>
+        </div>
+
+        <div class="admin-forms">
+          <!-- THÊM SÁCH VÀO THƯ VIỆN -->
+          <form class="card" id="libBookForm">
+            <h3>➕ Thêm sách vào thư viện</h3>
+            <div class="field">
+              <label for="libTitle">Tên sách</label>
+              <input id="libTitle" type="text" placeholder="Ví dụ: Góc sân và khoảng trời">
+            </div>
+            <div class="field">
+              <label for="libLink">Link sách (bắt đầu bằng http:// hoặc https://)</label>
+              <input id="libLink" type="url" placeholder="https://...">
+            </div>
+            <div class="field">
+              <label for="libQR">Ảnh QR <small>(không bắt buộc)</small></label>
+              <input id="libQR" type="text" placeholder="images/qr-sach-1.png hoặc link ảnh https://...">
+              <p class="field-hint">💡 Bỏ trống ô này, hệ thống sẽ <b>tự tạo mã QR</b> từ link sách.</p>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnAddLibBook">➕ Thêm sách</button>
+          </form>
+
+          <!-- THÊM VIDEO -->
+          <form class="card" id="videoForm">
+            <h3>🎥 Thêm video giới thiệu sách</h3>
+            <div class="field">
+              <label for="videoTitle">Tên video</label>
+              <input id="videoTitle" type="text" placeholder="Ví dụ: Giới thiệu sách Dế Mèn phiêu lưu ký">
+            </div>
+            <div class="field">
+              <label for="videoLink">Link video YouTube</label>
+              <input id="videoLink" type="url" placeholder="https://www.youtube.com/watch?v=...">
+              <p class="field-hint">💡 Dán link YouTube bình thường, hệ thống tự chuyển sang dạng phát được.</p>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnAddVideo">🎬 Đăng video</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>📚 Hệ thống Đại sứ Văn hóa đọc · Trường Tiểu học Trần Phú - Xã Krông Nô</p>
+    </footer>
+  </div>
+
+  <!-- Hộp thông báo nhỏ (toast) -->
+  <div id="toast" class="toast" role="status"></div>
+
+  <!-- ================================================================
+       THƯ VIỆN FIREBASE (bản compat, dùng được với JS thuần)
+  ================================================================= -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+  <!-- Cấu hình Firebase (THAY thông tin dự án của bạn trong file này) -->
+  <script src="firebase-config.js"></script>
+
+  <!-- Toàn bộ logic của ứng dụng -->
+  <script src="app.js"></script>
+</body>
+
+</html>
