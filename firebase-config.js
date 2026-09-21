@@ -15,12 +15,12 @@
 ===================================================================== */
 
 const firebaseConfig = {
-  apiKey:            "THAY_API_KEY",
-  authDomain:        "THAY_AUTH_DOMAIN",
-  projectId:         "THAY_PROJECT_ID",
-  storageBucket:     "THAY_STORAGE_BUCKET",
-  messagingSenderId: "THAY_MESSAGING_SENDER_ID",
-  appId:             "THAY_APP_ID"
+  apiKey: "AIzaSyBrA0ibtPnaN7au1MuA7VCyY7692b6k17k",
+  authDomain: "vanhoadoc-lethihonggam.firebaseapp.com",
+  projectId: "vanhoadoc-lethihonggam",
+  storageBucket: "vanhoadoc-lethihonggam.firebasestorage.app",
+  messagingSenderId: "770267101172",
+  appId: "1:770267101172:web:33689bd6c38d74393e6ba1"
 };
 
 /* ---------------------------------------------------------------------
