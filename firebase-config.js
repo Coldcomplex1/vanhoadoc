@@ -3,7 +3,7 @@
    ---------------------------------------------------------------------
    ⚠️ ĐÂY LÀ NƠI DUY NHẤT BẠN CẦN SỬA ĐỂ KẾT NỐI FIREBASE.
 
-   Cách lấy thông tin cấu hình (xem hướng dẫn chi tiết trong README.md):
+   Cách lấy thông tin cấu hình (xem hướng dẫn chi tiết trong HUONG-DAN.md):
    1. Vào https://console.firebase.google.com → tạo dự án mới.
    2. Bấm biểu tượng Web (</>) để "Thêm ứng dụng web".
    3. Firebase sẽ hiện ra đoạn firebaseConfig → copy các giá trị
@@ -15,12 +15,12 @@
 ===================================================================== */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBFQ7irouYMXOW3lgqRkKSJK69oOHxrEVE",
-  authDomain: "vanhoadockrongno.firebaseapp.com",
-  projectId: "vanhoadockrongno",
-  storageBucket: "vanhoadockrongno.firebasestorage.app",
-  messagingSenderId: "1046723903837",
-  appId: "1:1046723903837:web:7abc620d15d25a8992e8b4"
+  apiKey:            "THAY_API_KEY",
+  authDomain:        "THAY_AUTH_DOMAIN",
+  projectId:         "THAY_PROJECT_ID",
+  storageBucket:     "THAY_STORAGE_BUCKET",
+  messagingSenderId: "THAY_MESSAGING_SENDER_ID",
+  appId:             "THAY_APP_ID"
 };
 
 /* ---------------------------------------------------------------------
@@ -28,12 +28,12 @@ const firebaseConfig = {
    Firebase Authentication yêu cầu đăng nhập bằng email, nhưng học sinh
    tiểu học chỉ cần nhớ TÊN ĐĂNG NHẬP. Hệ thống sẽ tự ghép:
        tên đăng nhập + đuôi dưới đây → email dùng nội bộ.
-   Ví dụ: "an.nguyen" → "an.nguyen@tranphu-krongno.edu.vn"
+   Ví dụ: "an.nguyen" → "an.nguyen@lethihonggam-krongno.edu.vn"
    (Email này KHÔNG cần tồn tại thật.)
    ⚠️ Sau khi đã có học sinh đăng ký, KHÔNG đổi giá trị này nữa,
    nếu đổi thì các tài khoản cũ sẽ không đăng nhập được.
 --------------------------------------------------------------------- */
-const EMAIL_DOMAIN = "tranphu-krongno.edu.vn";
+const EMAIL_DOMAIN = "lethihonggam-krongno.edu.vn";
 
 /* ---------------------------------------------------------------------
    Tự phát hiện đã cấu hình Firebase hay chưa:

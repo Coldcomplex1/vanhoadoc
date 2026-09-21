@@ -1,6 +1,6 @@
 /* =====================================================================
    HỆ THỐNG ĐẠI SỨ VĂN HÓA ĐỌC - app.js
-   Trường Tiểu học Trần Phú - Xã Krông Nô
+   Trường Tiểu học Lê Thị Hồng Gấm (Xã Krông Nô)
    ---------------------------------------------------------------------
    Cấu trúc file:
    1. Cấu hình điểm & danh hiệu (dễ chỉnh sửa mốc điểm)
@@ -36,7 +36,7 @@ const DANH_HIEU = [
 
 // Tài khoản admin DEMO - CHỈ dùng ở chế độ thử nghiệm (chưa có Firebase).
 // Khi đã dùng Firebase, tài khoản admin được tạo trong Firestore
-// với role = "admin" (xem hướng dẫn trong README.md).
+// với role = "admin" (xem hướng dẫn trong HUONG-DAN.md).
 const ADMIN_DEMO = { username: "admin", password: "admin@123" };
 
 /** Trả về danh hiệu tương ứng với số điểm */
@@ -203,7 +203,7 @@ const FirebaseStore = {
     await fbDB.collection("users").doc(cred.user.uid).set({
       username,
       displayName,
-      role: "student", // học sinh; muốn có admin xem hướng dẫn README.md
+      role: "student", // học sinh; muốn có admin xem hướng dẫn HUONG-DAN.md
       score: 0,
       bookCount: 0,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -446,7 +446,7 @@ function dichLoi(err) {
     "auth/weak-password": "Mật khẩu quá ngắn, cần ít nhất 6 ký tự.",
     "auth/too-many-requests": "Nhập sai quá nhiều lần, em chờ vài phút rồi thử lại nhé.",
     "auth/network-request-failed": "Lỗi kết nối mạng. Em kiểm tra internet rồi thử lại.",
-    "auth/operation-not-allowed": "Hệ thống chưa bật đăng nhập Email/Password trong Firebase (xem README).",
+    "auth/operation-not-allowed": "Hệ thống chưa bật đăng nhập Email/Password trong Firebase (xem HUONG-DAN.md).",
     "auth/user-disabled": "Tài khoản này đã bị khóa. Em hãy báo với thầy cô nhé.",
     // Lỗi Firestore
     "permission-denied": "Em không có quyền làm thao tác này.",
